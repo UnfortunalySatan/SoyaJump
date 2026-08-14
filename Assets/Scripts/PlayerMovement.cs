@@ -49,10 +49,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void Movement()
     {
-        float playerY = rb.linearVelocityY;
-        if (isOnGround == true)
+        if (isOnGround == true && rb.linearVelocityY <= 0)
         {
-            rb.AddForceY(playerJumpForce, ForceMode2D.Impulse);
+            rb.linearVelocityY = playerJumpForce;
         }
         if (moveDirect != 0 && rb != null)
         {
@@ -62,14 +61,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocityX = 0f;
         }
-        if (playerY > 0)
-        {
-            col.isTrigger = true;
-        }
-        if (playerY <= 0)
-        {
-            col.isTrigger = false;
-        }
+
         if (rb.linearVelocityY > maxSpeed)
         {
             rb.linearVelocityY = 0;
@@ -107,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
         rb.gravityScale = 1f;
         transform.position = startPoint.position;
         ResetCamera();
+        EventBus.isPlayerReady?.Invoke();
     }
     public void PlayerContinue()
     {
@@ -165,6 +158,8 @@ public class PlayerMovement : MonoBehaviour
             sprite.flipX = false;
         }
     }
+
+    
 
 
 

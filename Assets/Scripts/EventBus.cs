@@ -7,6 +7,7 @@ public static class EventBus
     public static Action isPlayerDead; //Вызывается в Border для GameManager
     public static Action isPlayerContinue;
     public static Action isPlayerSurrender;
+    public static Action isPlayerReady;
     //Пауза
     public static Action isPause;
     public static Action isResume;

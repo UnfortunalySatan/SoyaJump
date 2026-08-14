@@ -64,8 +64,59 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform_Moving
       objectReference: {fileID: 0}
+    - target: {fileID: 8778843573749305596, guid: 53e71bf14a00a054e9e4ae6ec3b2eb18, type: 3}
+      propertyPath: platformType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778843573749305596, guid: 53e71bf14a00a054e9e4ae6ec3b2eb18, type: 3}
+      propertyPath: scoreMultiplier
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778843573749305596, guid: 53e71bf14a00a054e9e4ae6ec3b2eb18, type: 3}
+      propertyPath: maxPlatformSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778843573749305596, guid: 53e71bf14a00a054e9e4ae6ec3b2eb18, type: 3}
+      propertyPath: minPlatformSpeed
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8484796478191616567, guid: 53e71bf14a00a054e9e4ae6ec3b2eb18, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7964947472824939675}
   m_SourcePrefab: {fileID: 100100000, guid: 53e71bf14a00a054e9e4ae6ec3b2eb18, type: 3}
+--- !u!1 &6996229420415664117 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8484796478191616567, guid: 53e71bf14a00a054e9e4ae6ec3b2eb18, type: 3}
+  m_PrefabInstance: {fileID: 1501832717675527618}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &7964947472824939675
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6996229420415664117}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 6

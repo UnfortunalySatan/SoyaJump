@@ -128,7 +128,7 @@ public class Spawner : MonoBehaviour
         return new Vector3(PosX(), PosY(), 0f);
     }
 
-    private void GetScreenBorders()
+    public void GetScreenBorders()
     {
         Vector3 leftEdge = cam.ScreenToWorldPoint(new Vector3(0, 0, 0));
         Vector3 rightEdge = cam.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0));
@@ -185,10 +185,10 @@ public class Spawner : MonoBehaviour
 
     private void OnEnable()
     {
-        EventBus.isPlayerSurrender += ResetSpawner;
+        EventBus.isPlayerReady += ResetSpawner;
     }
     private void OnDisable()
     {
-        EventBus.isPlayerSurrender -= ResetSpawner;
+        EventBus.isPlayerReady -= ResetSpawner;
     }
 }

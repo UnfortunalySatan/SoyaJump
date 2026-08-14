@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1087764334545599650, guid: 53e71bf14a00a054e9e4ae6ec3b2eb18, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5293805899755127556, guid: 53e71bf14a00a054e9e4ae6ec3b2eb18, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -63,6 +67,10 @@ PrefabInstance:
     - target: {fileID: 8484796478191616567, guid: 53e71bf14a00a054e9e4ae6ec3b2eb18, type: 3}
       propertyPath: m_Name
       value: Platform_Broken
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778843573749305596, guid: 53e71bf14a00a054e9e4ae6ec3b2eb18, type: 3}
+      propertyPath: platformType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
