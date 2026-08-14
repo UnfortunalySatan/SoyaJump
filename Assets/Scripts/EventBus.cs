@@ -11,4 +11,10 @@ public static class EventBus
     //Пауза
     public static Action isPause;
     public static Action isResume;
+
+    //По платформам
+    public static Action<float> isPlatformWidth;
+
+    //Границы экрана
+    public static Action<float, float> isGetScreenBorders;
 }

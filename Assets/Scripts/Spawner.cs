@@ -26,7 +26,7 @@ public class Spawner : MonoBehaviour
 
     // Ссылка на корутину, чтобы корректно управлять перезапуском игры
     private Coroutine initAndSpawnRoutine;
-
+    float platformWidth;
     private void Awake()
     {
         // Просто объявляем камеру и границы заранее
@@ -38,6 +38,7 @@ public class Spawner : MonoBehaviour
     {
         // Запускаем единую цепочку: Инициализация пула -> Спавн первых платформ
         initAndSpawnRoutine = StartCoroutine(InitializeAndStartGame());
+        PlatformWidth();
     }
 
     private IEnumerator InitializeAndStartGame()
@@ -118,7 +119,7 @@ public class Spawner : MonoBehaviour
     private float PosX()
     {
         float xPos = Random.Range(leftBorder, rightBorder);
-        float platformWidth = platformsPrefabs[0].GetComponent<SpriteRenderer>().bounds.size.x;
+        //float platformWidth = platformsPrefabs[0].GetComponent<SpriteRenderer>().bounds.size.x;
         xPos = Mathf.Clamp(xPos, leftBorder + platformWidth / 2, rightBorder - platformWidth / 2);
         return xPos;
     }
@@ -134,6 +135,7 @@ public class Spawner : MonoBehaviour
         Vector3 rightEdge = cam.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0));
         leftBorder = leftEdge.x;
         rightBorder = rightEdge.x;
+        EventBus.isGetScreenBorders?.Invoke(rightBorder, leftBorder);
     }
 
     // ИСПРАВЛЕНО ДЛЯ ПЕРЕЗАПУСКА
@@ -181,6 +183,12 @@ public class Spawner : MonoBehaviour
         {
             SpawnPlatform(PlatformPosition());
         }
+    }
+
+    private void PlatformWidth()
+    {
+        platformWidth = platformsPrefabs[0].GetComponent<SpriteRenderer>().bounds.size.x;
+        EventBus.isPlatformWidth?.Invoke(platformWidth);
     }
 
     private void OnEnable()

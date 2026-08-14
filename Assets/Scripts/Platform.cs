@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Platform : MonoBehaviour
@@ -33,9 +34,6 @@ public class Platform : MonoBehaviour
         score = scoring.GetScore();
         col = GetComponent<Collider2D>();
         isTouched = false;
-        GetScreenBorders();
-        platformWidth = GetComponent<SpriteRenderer>().bounds.size.x;
-
         if (platformType == 1)
         {
             rb = GetComponent<Rigidbody2D>();
@@ -89,7 +87,7 @@ public class Platform : MonoBehaviour
     }
     private float RandomPlatformSpeed()
     {
-        float speed = Random.Range(minPlatformSpeed + SpeedMultiplier(), maxPlatformSpeed + SpeedMultiplier());
+        float speed = UnityEngine.Random.Range(minPlatformSpeed + SpeedMultiplier(), maxPlatformSpeed + SpeedMultiplier());
         if (speed >= speedLimit)
         {
             speed = speedLimit;
@@ -119,12 +117,10 @@ public class Platform : MonoBehaviour
                 break;
         }
     }
-    private void GetScreenBorders()
+    private void GetScreenBorders(float right, float left)
     {
-        Vector3 leftEdge = cam.ScreenToWorldPoint(new Vector3(0, 0, 0));
-        Vector3 rightEdge = cam.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0));
-        leftBorder = leftEdge.x;
-        rightBorder = rightEdge.x;
+        rightBorder = right;
+        leftBorder = left;
     }
 
     //Для хрупких платформ
@@ -143,5 +139,21 @@ public class Platform : MonoBehaviour
         {
             Break();
         }
+    }
+    private void GetPlatformWidth(float width)
+    {
+        platformWidth = width;
+    }
+
+
+    private void OnEnable()
+    {
+        EventBus.isPlatformWidth += GetPlatformWidth;
+        EventBus.isGetScreenBorders += GetScreenBorders;
+    }
+    private void OnDisable()
+    {
+        EventBus.isPlatformWidth -= GetPlatformWidth;
+        EventBus.isGetScreenBorders -= GetScreenBorders;
     }
 }
