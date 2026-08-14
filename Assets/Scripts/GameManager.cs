@@ -79,4 +79,9 @@ public class GameManager : MonoBehaviour
     {
         EventBus.isPlayerDead -= Death;
     }
+    void Awake()
+    {
+        Application.targetFrameRate = 60; // Или 30, если 60 нестабильно
+        QualitySettings.vSyncCount = 0; // Отключаем вертикальную синхронизацию
+    }
 }
